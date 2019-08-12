@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/tests/Tests.Web/bin/Debug/netcoreapp2.2/TBGP.Tests.Web.dll",
+            "program": "${workspaceFolder}/src/Web/bin/Debug/netcoreapp2.2/TBGP.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/tests/Tests.Web",
+            "cwd": "${workspaceFolder}/src/Web",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
