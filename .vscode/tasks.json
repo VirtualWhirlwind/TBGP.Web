@@ -36,6 +36,9 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
+            "options": {
+                "cwd": "${workspaceRoot}/src/Web"
+            },
             "problemMatcher": "$msCompile"
         }
     ]
