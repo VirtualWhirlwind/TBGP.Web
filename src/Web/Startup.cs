@@ -53,8 +53,7 @@ namespace TBGP.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            //app.UseMvc();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc();
         }
     }
 }

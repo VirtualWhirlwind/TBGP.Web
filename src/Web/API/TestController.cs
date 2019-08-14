@@ -9,16 +9,16 @@ namespace Web.API
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<string> GetNow()
+        [HttpGet("Now")]
+        public ActionResult<string> Now()
         {
-            return DateTime.Now.ToString("yyyy-MM-DD HH:mm:ss");
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<string> GetEcho(string id)
+        [HttpGet("Echo/{input}")]
+        public ActionResult<string> Echo(string input)
         {
-            return string.Format("Echo ({0:yyyy-MM-DD HH:mm:ss}): {1}", DateTime.Now, id);
+            return string.Format("Echo ({0:yyyy-MM-dd HH:mm:ss}): {1}", DateTime.Now, input);
         }
     }
 }
