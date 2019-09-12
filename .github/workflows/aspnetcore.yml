@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: Build with dotnet
+    - name: Build and Test with dotnet
       run: |
-      dotnet build src/**/*.csproj --configuration Release
-      dotnet test tests/**/*.csproj
+        dotnet build src/**/*.csproj --configuration Release
+        dotnet test tests/**/*.csproj
