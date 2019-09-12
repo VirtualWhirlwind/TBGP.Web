@@ -15,5 +15,8 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build and Test with dotnet
       run: |
-        dotnet build src/**/*.csproj --configuration Release
-        dotnet test tests/**/*.csproj
+        dotnet build src/Web/TBGP.Web.csproj --configuration Release
+        dotnet build src/Worker/TBGP.Worker.csproj --configuration Release
+        dotnet test tests/Tests.Infrastructure/TBGP.Tests.Infrastructure.csproj
+        dotnet test tests/Tests.Web/TBGP.Tests.Web.csproj
+        dotnet test tests/Tests.Worker/TBGP.Tests.Worker.csproj
