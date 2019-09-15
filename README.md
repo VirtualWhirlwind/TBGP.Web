@@ -18,13 +18,13 @@ OVERVIEW
 REPOS
 TBGP.Web
 * Core &^ (dependent on CommInterfaces)
-* Infrastructure &^ (tied to Core)
-* Storage &^ (Interfaces, tied to Core)
-* Game &^ (interfaces, tied to Core)
+* Infrastructure &^ (dependent on Core to implement interfaces, dependent on Storage.Mongo?)
 * Storage.Mongo &^
 * CommInterfaces &^
 * Web
 * Worker & (use Core, Infrastructure, Storage)
+* 
+* Game &^ (interfaces, tied to Core)
 * Game.TicTacToe
 * Game.Checkers
 * Game.Vector3
@@ -34,16 +34,20 @@ TBGP.Web
 * Tests.Core
 * Tests.Infrastructure
 
+Later, break out via "Clean Architecutre" to the following repo's:
 https://github.com/ardalis/CleanArchitecture
+
+TBGP.Web - Core Razor Pages
 
 TBGP.Core
 
+TBGP.Infrastructure
+
+TBGP.Storage.Mongo?
+
 TBGP.CommInterfaces
 
-TBGP.Storage.Mongo
-
-TBGP.UI
-Unity
+TBGP.UI - Unity
 
 ^ = NuGet 
 & = Separate repo later

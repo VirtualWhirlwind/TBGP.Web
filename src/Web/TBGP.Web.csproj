@@ -13,6 +13,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\TBGP.Core.csproj" />
     <ProjectReference Include="..\Infrastructure\TBGP.Infrastructure.csproj" />
     <ProjectReference Include="..\CommInterfaces\TBGP.CommInterfaces.csproj" />
   </ItemGroup>
