@@ -17,6 +17,6 @@ jobs:
       run: |
         dotnet build src/Web/TBGP.Web.csproj --configuration Release
         dotnet build src/Worker/TBGP.Worker.csproj --configuration Release
-        dotnet test tests/Tests.Infrastructure/TBGP.Tests.Infrastructure.csproj --filter "NeedsDatabase!=Yes"
-        dotnet test tests/Tests.Web/TBGP.Tests.Web.csproj
-        dotnet test tests/Tests.Worker/TBGP.Tests.Worker.csproj
+        dotnet test tests/Infrastructure.Tests/TBGP.Infrastructure.Tests.csproj --filter "NeedsDatabase!=Yes"
+        dotnet test tests/Web.Tests/TBGP.Web.Tests.csproj
+        dotnet test tests/Worker.Tests/TBGP.Worker.Tests.csproj
