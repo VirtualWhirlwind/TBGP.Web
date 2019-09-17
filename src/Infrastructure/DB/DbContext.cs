@@ -1,5 +1,6 @@
 using Infrastructure.DB_Model;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
 namespace Infrastructure.DB
@@ -35,6 +36,15 @@ namespace Infrastructure.DB
 
             Client = new MongoClient(Server);
             DB = Client.GetDatabase(new MongoUrl(Server).DatabaseName);
+
+            // Set up MongoDB conventions
+            var pack = new ConventionPack
+            {
+                new EnumRepresentationConvention(BsonType.String)
+                // Dictionary?
+            };
+
+            ConventionRegistry.Register("EnumStringConvention", pack, t => true);
 
             // Initialize DbSet Collections Here
             Statuses = DB.GetCollection<Status>(typeof(Status).Name);

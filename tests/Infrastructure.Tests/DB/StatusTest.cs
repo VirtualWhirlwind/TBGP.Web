@@ -17,10 +17,11 @@ namespace TBGP.Tests.Infrastructure
             //    .AddJsonFile("appsettings.json")
             //    .Build();
             //Config = config;
-            DB = new DbMgr("mongodb://localhost:27017/TBGP_Dev");
+            DB = new DbMgr("mongodb://localhost:27017/TBGP_UnitTest");
         }
         
         [Fact]
+        [Trait("NeedsDatabase", "Yes")]
         public void RoughTest1()
         {
             //var SUT = DB.GetStatus();

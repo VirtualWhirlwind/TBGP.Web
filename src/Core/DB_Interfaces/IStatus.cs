@@ -1,7 +1,8 @@
 namespace Core.DB_Interfaces
 {
+    public enum StatusState { Offline, Online, Maintenance }
     public interface IStatus : IBaseObj
     {
-        string State { get; set; }
+        StatusState State { get; set; }
     }
 }
