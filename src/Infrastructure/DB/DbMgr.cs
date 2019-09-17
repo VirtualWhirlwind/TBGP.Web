@@ -24,6 +24,11 @@ namespace Infrastructure.DB
         {
             Context = new DbContext(config["ConnectionStrings:Main"]);
         }
+
+        public DbMgr(string connectionString)
+        {
+            Context = new DbContext(connectionString);
+        }
         #endregion
 
         #region Methods

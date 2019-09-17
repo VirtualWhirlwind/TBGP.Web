@@ -1,3 +1,4 @@
+using Infrastructure.DB_Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -6,6 +7,7 @@ namespace Infrastructure.DB
     public class DbContext
     {
         #region DbSets
+        public IMongoCollection<Status> Statuses { get; set; }
         #endregion
 
         #region Properties
@@ -35,7 +37,7 @@ namespace Infrastructure.DB
             DB = Client.GetDatabase(new MongoUrl(Server).DatabaseName);
 
             // Initialize DbSet Collections Here
-            
+            Statuses = DB.GetCollection<Status>(typeof(Status).Name);
         }
         #endregion
     }
