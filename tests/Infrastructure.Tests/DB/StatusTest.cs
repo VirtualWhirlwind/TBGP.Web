@@ -17,15 +17,15 @@ namespace TBGP.Tests.Infrastructure
             //    .AddJsonFile("appsettings.json")
             //    .Build();
             //Config = config;
-            DB = new DbMgr("mongodb://localhost:27017/TBGP_UnitTest");
+            DB = new DbMgr("mongodb://localhost:27017/TBGP_UnitTest/?connectTimeoutMS=3000&socketTimeoutMS=3000");
         }
         
         [Fact]
         [Trait("NeedsDatabase", "Yes")]
         public void RoughTest1()
         {
-            //var SUT = DB.GetStatus();
-            var SUT = new Status();
+            var SUT = DB.GetStatus();
+            if (SUT == null) { SUT = new Status(); }
             DB.SaveStatus(SUT);
         }
     }
