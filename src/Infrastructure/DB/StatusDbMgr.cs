@@ -11,7 +11,6 @@ namespace Infrastructure.DB
         {
             if (save.Id != null)
             {
-                //Context.Statuses.FindOneAndReplace(Filter(save.Id.ToString()), (Status)save, Options);
                 Context.Statuses.FindOneAndReplace(Filter(save.Id.ToString()), (Status)save);
             }
             else

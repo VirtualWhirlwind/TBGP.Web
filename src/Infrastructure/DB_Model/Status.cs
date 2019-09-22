@@ -1,4 +1,5 @@
 using Core.DB_Interfaces;
+using static Core.Enums;
 
 namespace Infrastructure.DB_Model
 {
