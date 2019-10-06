@@ -19,6 +19,11 @@ namespace Infrastructure.DB
             }
         }
 
-        public IStatus GetStatus() => Context.Statuses.Find(Filter()).FirstOrDefault();
+        public IStatus GetStatus()
+        {
+            var Result = Context.Statuses.Find(Filter()).FirstOrDefault();
+            if (Result == null) { Result = new Status(); }
+            return Result;
+        }
     }
 }

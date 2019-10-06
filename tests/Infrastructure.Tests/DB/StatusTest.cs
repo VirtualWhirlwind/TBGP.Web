@@ -20,13 +20,19 @@ namespace TBGP.Tests.Infrastructure
             DB = new DbMgr("mongodb://localhost:27017/TBGP_UnitTest/?connectTimeoutMS=3000&socketTimeoutMS=3000");
         }
         
-        [Fact]
+        [Fact(Skip="DB Testing Only")]
         [Trait("NeedsDatabase", "Yes")]
         public void RoughTest1()
         {
             var SUT = DB.GetStatus();
-            if (SUT == null) { SUT = new Status(); }
             DB.SaveStatus(SUT);
         }
+
+        // public void IsNotNull()
+        // {
+        //     var SUT = DB.GetStatus();
+
+        //     Assert.NotNull(SUT);
+        // }
     }
 }
