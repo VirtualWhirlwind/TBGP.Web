@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.DB;
-using Core.DB_Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
-namespace TBGP.Web.Pages
+namespace Web.Pages
 {
     public class IndexModel : PageModel
     {
-        protected IDbMgr DB { get; set; }
-        public IStatus CurrentStatus { get; set; }
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(IDbMgr db)
+        public IndexModel(ILogger<IndexModel> logger)
         {
-            DB = db;
+            _logger = logger;
         }
 
         public void OnGet()
         {
-            CurrentStatus = DB.GetStatus();
+
         }
     }
 }
