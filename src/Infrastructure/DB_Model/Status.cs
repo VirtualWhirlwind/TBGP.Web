@@ -8,6 +8,8 @@ namespace Infrastructure.DB_Model
     {
         protected DateTime _LastUpdated = DateTime.Now;
 
+        public string Name { get; set; }
+
         public StatusState State { get; set; }
 
         public DateTime LastUpdate
