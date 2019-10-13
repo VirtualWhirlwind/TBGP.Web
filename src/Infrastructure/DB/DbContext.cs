@@ -1,53 +1,36 @@
+using Core;
 using Infrastructure.DB_Model;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Conventions;
-using MongoDB.Driver;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.DB
 {
-    public class DbContext
+    public class DbContextTBGP : DbContext
     {
         #region DbSets
-        public IMongoCollection<Status> Statuses { get; set; }
+        public DbSet<Status> Statuses { get; set; }
         #endregion
 
         #region Properties
         public static string Server { get; set; }
-
-        public IMongoClient Client { get; set; }
-        public IMongoDatabase DB { get; set; }
         #endregion
 
         #region Construct / Destruct
-        public DbContext() { SetCollections(); }
+        public DbContextTBGP() { }
 
-        public DbContext(string server)
+        public DbContextTBGP(string server)
         {
             Server = server;
-
-            SetCollections();
         }
         #endregion
 
         #region Methods
-        public void SetCollections()
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseMySql(Server);
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (Server == null || string.IsNullOrEmpty(Server)) { return; }
-
-            Client = new MongoClient(Server);
-            DB = Client.GetDatabase(new MongoUrl(Server).DatabaseName);
-
-            // Set up MongoDB conventions
-            var pack = new ConventionPack
-            {
-                new EnumRepresentationConvention(BsonType.String)
-                // Dictionary?
-            };
-
-            ConventionRegistry.Register("EnumStringConvention", pack, t => true);
-
-            // Initialize DbSet Collections Here
-            Statuses = DB.GetCollection<Status>(typeof(Status).Name);
+            var ETSConverter = new EnumToStringConverter<Enums.StatusState>();
+            modelBuilder.Entity<Status>().Property(s => s.State).HasConversion(ETSConverter);
         }
         #endregion
     }

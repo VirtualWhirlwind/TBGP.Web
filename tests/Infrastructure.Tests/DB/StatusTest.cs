@@ -1,30 +1,26 @@
-//using System;
 using Infrastructure.DB;
-using Infrastructure.DB_Model;
-//using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace TBGP.Tests.Infrastructure
+namespace TBGP.Infrastructure.Tests
 {
-    public class StatusTest
+    public class StatusTest  : BaseTest
     {
         //public IConfiguration Config { get; set; }
         public DbMgr DB { get; set; }
         
         public StatusTest()
         {
-            //Config = new ConfigurationBuilder()
-            //    .AddJsonFile("appsettings.json")
-            //    .Build();
-            //Config = config;
-            DB = new DbMgr("mongodb://localhost:27017/TBGP_UnitTest/?connectTimeoutMS=3000&socketTimeoutMS=3000");
+            DB = new DbMgr(Config);
         }
         
+        //[Fact]
         [Fact(Skip="DB Testing Only")]
         [Trait("NeedsDatabase", "Yes")]
         public void RoughTest1()
         {
             var SUT = DB.GetStatus();
+            SUT.State = Core.Enums.StatusState.Maintenance;
+            SUT.State = Core.Enums.StatusState.Offline;
             DB.SaveStatus(SUT);
         }
 

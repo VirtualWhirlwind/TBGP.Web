@@ -1,7 +1,7 @@
 using Core.DB;
 using Core.DB_Interfaces;
 using Infrastructure.DB_Model;
-using MongoDB.Driver;
+using System.Linq;
 
 namespace Infrastructure.DB
 {
@@ -9,19 +9,20 @@ namespace Infrastructure.DB
     {
         public void SaveStatus(IStatus save)
         {
-            if (save.Id != null)
+            if (save.Id != 0)
             {
-                Context.Statuses.FindOneAndReplace(Filter(save.Id.ToString()), (Status)save);
+                Context.Update(save);
             }
             else
             {
-                Context.Statuses.InsertOne((Status)save);
+                Context.Add(save);
             }
+            Context.SaveChanges();
         }
 
         public IStatus GetStatus()
         {
-            var Result = Context.Statuses.Find(Filter()).FirstOrDefault();
+            var Result = Context.Statuses.SingleOrDefault(c => c.Name == Status.DEFAULT_NAME);
             if (Result == null) { Result = new Status(); }
             return Result;
         }
