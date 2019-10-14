@@ -5,7 +5,6 @@ namespace TBGP.Infrastructure.Tests
 {
     public class StatusTest  : BaseTest
     {
-        //public IConfiguration Config { get; set; }
         public DbMgr DB { get; set; }
         
         public StatusTest()

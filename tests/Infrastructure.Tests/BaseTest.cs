@@ -6,6 +6,7 @@ namespace TBGP.Infrastructure.Tests
     public class BaseTest
     {
         public IConfigurationRoot Config { get; set; }
+        
         public BaseTest()
         {
             var builder = new ConfigurationBuilder()

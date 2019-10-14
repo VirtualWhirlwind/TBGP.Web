@@ -9,14 +9,8 @@ namespace Infrastructure.DB
     {
         public void SaveStatus(IStatus save)
         {
-            if (save.Id != 0)
-            {
-                Context.Update(save);
-            }
-            else
-            {
-                Context.Add(save);
-            }
+            if (save.Id != 0) { Context.Update(save); }
+            else { Context.Add(save); }
             Context.SaveChanges();
         }
 
